@@ -1,7 +1,18 @@
+# Python bytecode & cache
 __pycache__/
 *.py[cod]
+
+# Virtual environments
 .venv/
 venv/
+
+# Environment variables & IDE settings
 .env
 .vscode/
 .idea/
+
+# Local RAG test scripts, sample data, and vector indexes
+test_rag.py
+sample_syllabus.txt
+faiss_index/
+test_faiss_index/
