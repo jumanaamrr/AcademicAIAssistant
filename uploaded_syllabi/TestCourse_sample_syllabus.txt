@@ -1,0 +1,33 @@
+COURSE: Introduction to Computer Science (CS101)
+
+GRADING POLICY:
+- Assignments: 30%
+- Midterm Exam: 30%  
+- Final Exam: 40%
+
+ATTENDANCE:
+- Students must attend at least 80% of lectures
+- More than 3 absences will result in grade reduction
+
+LATE SUBMISSION:
+- Assignments submitted within 24 hours late: 10% deduction
+- Assignments submitted 24-48 hours late: 30% deduction
+- Assignments submitted more than 48 hours late: Not accepted
+
+OFFICE HOURS:
+- Monday and Wednesday: 2:00 PM - 4:00 PM
+- Friday: 10:00 AM - 12:00 PM
+
+TOPICS:
+1. Introduction to Programming
+2. Data Types
+3. Control Flow
+4. Functions
+5. Arrays
+6. OOP
+7. File I/O
+8. Exception Handling
+9. Data Structures
+10. Algorithms
+
+FINAL EXAM: December 15, 2026

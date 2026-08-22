@@ -1,50 +1,83 @@
+const API_BASE_URL = "http://localhost:8001";
+
 const input = document.getElementById("chat-input");
 const sendButton = document.getElementById("send-button");
 const messages = document.querySelector(".chat-messages");
 
-sendButton.addEventListener("click", sendMessage);
+let sessionId = localStorage.getItem("chat_session_id");
 
+if (!sessionId) {
+    sessionId = "user_" + Date.now();
+    localStorage.setItem("chat_session_id", sessionId);
+}
+
+sendButton.addEventListener("click", sendMessage);
 input.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         sendMessage();
     }
 });
 
-function sendMessage() {
-
+async function sendMessage() {
     const question = input.value.trim();
-
+    
     if (question === "") {
         return;
     }
-
+    
     // Add user's message
-    const userMessage = document.createElement("div");
-
-    userMessage.classList.add("message");
-    userMessage.classList.add("user-message");
-
-    userMessage.textContent = question;
-
-    messages.appendChild(userMessage);
-
-    // Clear input
+    addMessageToUI("user", question);
     input.value = "";
+    
+    // Show loading
+    const loadingMessage = addLoadingIndicator();
+    
+    try {
+        const response = await fetch(`${API_BASE_URL}/chat/message`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                question: question,
+                session_id: sessionId
+            })
+        });
+        
+        const data = await response.json();
+        loadingMessage.remove();
+        
+        if (response.ok) {
+            addMessageToUI("assistant", data.answer);
+        } else {
+            addMessageToUI("assistant", `Error: ${data.detail || "Something went wrong"}`);
+        }
+    } catch (error) {
+        loadingMessage.remove();
+        addMessageToUI("assistant", `Error: ${error.message}`);
+    }
+}
 
-    // Temporary response
-    setTimeout(function () {
+function addMessageToUI(role, content) {
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add("message");
+    
+    if (role === "user") {
+        messageDiv.classList.add("user-message");
+    } else {
+        messageDiv.classList.add("assistant-message");
+    }
+    
+    messageDiv.textContent = content;
+    messages.appendChild(messageDiv);
+    messages.scrollTop = messages.scrollHeight;
+}
 
-        const assistantMessage = document.createElement("div");
-
-        assistantMessage.classList.add("message");
-        assistantMessage.classList.add("assistant-message");
-
-        assistantMessage.textContent =
-            "I'm processing your question. The AI backend will be connected next.";
-
-        messages.appendChild(assistantMessage);
-
-        messages.scrollTop = messages.scrollHeight;
-
-    }, 500);
+function addLoadingIndicator() {
+    const loadingDiv = document.createElement("div");
+    loadingDiv.classList.add("message", "assistant-message");
+    loadingDiv.textContent = "Thinking...";
+    messages.appendChild(loadingDiv);
+    messages.scrollTop = messages.scrollHeight;
+    return loadingDiv;
 }

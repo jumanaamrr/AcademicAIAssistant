@@ -8,7 +8,6 @@ def create_study_schedule(
     start_date: str | None = None,
 ) -> List[Dict]:
     
-
     if not subjects:
         raise ValueError("Subjects list cannot be empty.")
 
@@ -81,6 +80,17 @@ def create_study_schedule(
 
     total_days = (last_exam - start).days + 1
 
+    # Calculate total study weight for each subject
+    total_weight = sum(s["weight"] for s in normalized_subjects)
+    
+    # Calculate how many days each subject should be studied
+    for subject in normalized_subjects:
+        days_until_exam = (subject["exam_date"] - start).days + 1
+        # More weight = more study days
+        subject["study_days"] = max(1, int(days_until_exam * (subject["weight"] / total_weight)))
+        # Initialize remaining study days
+        subject["study_days_remaining"] = subject["study_days"]
+
     schedule = []
 
     for day_offset in range(total_days):
@@ -88,14 +98,20 @@ def create_study_schedule(
             start.toordinal() + day_offset
         )
 
+        # Find subjects that still need study days and haven't had their exam yet
         available_subjects = [
             subject
             for subject in normalized_subjects
-            if current_day <= subject["exam_date"]
+            if current_day <= subject["exam_date"] 
+            and subject.get("study_days_remaining", 0) > 0
         ]
 
         if not available_subjects:
             continue
+
+        # Decrease remaining study days for subjects being studied
+        for subject in available_subjects:
+            subject["study_days_remaining"] = subject.get("study_days_remaining", 0) - 1
 
         # Calculate priority for each subject.
         # Subjects with earlier exams and higher difficulty
@@ -154,13 +170,14 @@ def create_study_schedule(
             if item["hours"] > 0
         ]
 
-        schedule.append({
-            "date": current_day.isoformat(),
-            "total_hours": round(
-                sum(item["hours"] for item in daily_plan),
-                1
-            ),
-            "sessions": daily_plan,
-        })
+        if daily_plan:  # Only add days that have actual study sessions
+            schedule.append({
+                "date": current_day.isoformat(),
+                "total_hours": round(
+                    sum(item["hours"] for item in daily_plan),
+                    1
+                ),
+                "sessions": daily_plan,
+            })
 
     return schedule

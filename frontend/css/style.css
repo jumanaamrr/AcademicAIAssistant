@@ -28,6 +28,11 @@ nav{
 
     padding:20px 80px;
 }
+
+.logo {
+    color: white;
+    font-weight: bold;
+}
 nav ul{
     display: flex;
     list-style: none;
