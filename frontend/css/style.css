@@ -1,0 +1,546 @@
+/* Remove default browser spacing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style the whole page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+}
+.container{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 80px;
+}
+/* Navigation Bar */
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #1e293b;
+
+    padding:20px 80px;
+}
+nav ul{
+    display: flex;
+    list-style: none;
+}
+
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    color: #38bdf8;
+}
+/* Hero Section */
+
+.container h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.container h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.container p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.container button {
+    transition: 0.2s;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.container button:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* Features section */
+.features {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+/* Feature cards container */
+.feature-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+/* Individual card */
+.feature-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Hover effect */
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .feature-container {
+        grid-template-columns: 1fr;
+    }
+}
+/* Chat page */
+
+.chat-page {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.chat-page h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.chat-description {
+    color: #666;
+    margin-bottom: 35px;
+    font-size: 17px;
+}
+
+.chat-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    text-align: left;
+}
+
+.chat-messages {
+    min-height: 350px;
+    padding: 25px;
+    background-color: #f8fafc;
+}
+
+.message {
+    max-width: 75%;
+    padding: 15px 18px;
+    border-radius: 12px;
+    line-height: 1.5;
+}
+
+.assistant-message {
+    background-color: #e8eefc;
+    color: #333;
+}
+
+.chat-input-area {
+    display: flex;
+    gap: 10px;
+    padding: 18px;
+    border-top: 1px solid #eee;
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+.chat-input-area input:focus {
+    border-color: #2563eb;
+}
+
+.chat-input-area button {
+    padding: 14px 25px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.chat-input-area button:hover {
+    background-color: #1d4ed8;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    .chat-page {
+        margin: 40px auto;
+    }
+
+    .chat-input-area {
+        flex-direction: column;
+    }
+
+    .chat-input-area button {
+        width: 100%;
+    }
+
+    .message {
+        max-width: 90%;
+    }
+}
+.page-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+    color: #2d2d2d;
+}
+
+.page-header p {
+    font-size: 18px;
+    color: #666;
+}
+
+.upload-card,
+.gpa-card,
+.courses-card,
+.study-card,
+.schedule-card {
+    background: white;
+    border-radius: 16px;
+    padding: 35px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.upload-card h2,
+.gpa-card h2,
+.courses-card h2,
+.study-card h2,
+.schedule-card h2 {
+    margin-top: 0;
+    color: #2d2d2d;
+}
+
+.upload-area {
+    text-align: center;
+    padding: 40px 20px;
+    border: 2px dashed #d5dce8;
+    border-radius: 12px;
+}
+
+.upload-area p {
+    color: #666;
+}
+
+#fileInput {
+    display: none;
+}
+
+.file-label {
+    display: inline-block;
+    background: #2864e8;
+    color: white;
+    padding: 13px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 15px 0;
+    font-weight: 600;
+}
+
+.file-label:hover {
+    background: #1f55c9;
+}
+
+.file-name {
+    font-weight: 600;
+    margin: 15px 0;
+    color: #333 !important;
+}
+
+.primary-button {
+    border: none;
+    background: #2864e8;
+    color: white;
+    padding: 13px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.primary-button:hover {
+    background: #1f55c9;
+}
+
+.upload-status {
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.info-section {
+    margin-top: 40px;
+}
+
+.info-section > h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.info-card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+.info-card h3 {
+    margin-top: 0;
+}
+
+.info-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    padding: 13px;
+    border: 1px solid #d5d9e0;
+    border-radius: 8px;
+    font-size: 15px;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #2864e8;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+    background: #f5f7fb;
+    font-weight: 600;
+}
+
+.delete-button {
+    border: none;
+    background: #e74c3c;
+    color: white;
+    padding: 7px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background: #c0392b;
+}
+
+.gpa-result {
+    background: #2864e8;
+    color: white;
+    border-radius: 16px;
+    padding: 35px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.gpa-result h2 {
+    margin-top: 0;
+}
+
+#gpaValue {
+    font-size: 56px;
+    font-weight: 700;
+    margin: 15px 0;
+}
+
+.gpa-result p {
+    margin-bottom: 0;
+}
+
+.schedule-card {
+    min-height: 200px;
+}
+
+.schedule-summary {
+    background: #f1f5ff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.schedule-summary h3 {
+    margin-top: 0;
+    color: #2864e8;
+}
+
+.schedule-summary p {
+    margin: 7px 0;
+    color: #555;
+}
+
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.schedule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fb;
+    padding: 18px 20px;
+    border-radius: 10px;
+    border-left: 4px solid #2864e8;
+}
+
+.schedule-item strong {
+    color: #333;
+}
+
+.schedule-item p {
+    margin: 6px 0 0;
+    color: #666;
+}
+
+.schedule-item span {
+    font-weight: 600;
+    color: #2864e8;
+}
+
+.schedule-note {
+    margin-top: 20px;
+    color: #777;
+    font-size: 14px;
+}
+
+@media (max-width: 700px) {
+
+    .page-container {
+        width: 92%;
+        padding: 40px 10px;
+    }
+
+    .page-header h1 {
+        font-size: 32px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .upload-card,
+    .gpa-card,
+    .courses-card,
+    .study-card,
+    .schedule-card {
+        padding: 25px;
+    }
+
+    .schedule-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}

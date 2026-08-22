@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Study Plan - Academic AI Assistant</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="logo">
+            Academic AI Assistant
+        </div>
+
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="chat.html">Chat</a></li>
+            <li><a href="upload.html">Upload</a></li>
+            <li><a href="gpa.html">GPA</a></li>
+            <li><a href="study-plan.html">Study Plan</a></li>
+        </ul>
+
+    </nav>
+
+    <main class="page-container">
+
+        <section class="page-header">
+
+            <h1>Personalized Study Planner</h1>
+
+            <p>
+                Create a study plan based on your subject,
+                exam date, difficulty, and available study time.
+            </p>
+
+        </section>
+
+        <section class="study-card">
+
+            <h2>Study Plan Information</h2>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subject"
+                        placeholder="Example: Artificial Intelligence"
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="examDate">
+                        Exam Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="examDate"
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="difficulty">
+                        Difficulty
+                    </label>
+
+                    <select id="difficulty">
+
+                        <option value="">
+                            Select Difficulty
+                        </option>
+
+                        <option value="Easy">
+                            Easy
+                        </option>
+
+                        <option value="Medium">
+                            Medium
+                        </option>
+
+                        <option value="Hard">
+                            Hard
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="hours">
+                        Available Hours Per Day
+                    </label>
+
+                    <input
+                        type="number"
+                        id="hours"
+                        min="1"
+                        max="24"
+                        placeholder="4"
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="startDate">
+                        Start Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="startDate"
+                    >
+
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                id="generateButton"
+                class="primary-button"
+            >
+                Generate Study Plan
+            </button>
+
+        </section>
+
+        <section
+            id="scheduleSection"
+            class="schedule-card"
+        >
+
+            <h2>Your Study Plan</h2>
+
+            <div id="scheduleResult">
+
+                <p>
+                    Enter your information and generate a study plan.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="../js/study-plan.js"></script>
+
+</body>
+</html>

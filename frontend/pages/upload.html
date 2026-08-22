@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Upload - Academic AI Assistant</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            Academic AI Assistant
+        </div>
+
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="chat.html">Chat</a></li>
+            <li><a href="upload.html">Upload</a></li>
+            <li><a href="gpa.html">GPA</a></li>
+            <li><a href="study-plan.html">Study Plan</a></li>
+        </ul>
+    </nav>
+
+    <main class="page-container">
+
+        <section class="page-header">
+            <h1>Upload Academic Documents</h1>
+
+            <p>
+                Upload your syllabus or course material to use it with
+                the Academic AI Assistant.
+            </p>
+        </section>
+
+        <section class="upload-card">
+
+            <div class="upload-area">
+
+                <h2>Upload Your Syllabus</h2>
+
+                <p>
+                    Select a PDF, DOC, DOCX, or TXT file.
+                </p>
+
+                <label for="fileInput" class="file-label">
+                    Choose File
+                </label>
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    accept=".pdf,.doc,.docx,.txt"
+                >
+
+                <p id="fileName" class="file-name">
+                    No file selected
+                </p>
+
+                <button
+                    type="button"
+                    id="uploadButton"
+                    class="primary-button"
+                >
+                    Upload Document
+                </button>
+
+                <p id="uploadStatus" class="upload-status"></p>
+
+            </div>
+
+        </section>
+
+        <section class="info-section">
+
+            <h2>Supported Documents</h2>
+
+            <div class="info-grid">
+
+                <div class="info-card">
+                    <h3>Course Syllabus</h3>
+                    <p>
+                        Upload your syllabus to ask questions about
+                        course topics, exams, policies, and assessments.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Course Materials</h3>
+                    <p>
+                        Upload academic documents that can be used
+                        when asking questions through the AI assistant.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="../js/upload.js"></script>
+
+</body>
+</html>
