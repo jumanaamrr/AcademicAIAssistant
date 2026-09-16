@@ -1,6 +1,5 @@
 import os
 import re
-import shutil
 import requests
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
@@ -36,7 +35,7 @@ def get_llm():
     
     return ChatGroq(
         model=model_name,
-        temperature=0,
+        temperature=0.3,
         api_key=api_key,
     )
 
@@ -59,7 +58,7 @@ def initialize_rag():
         chunks = split_documents(documents)
         vector_store = create_vector_store(chunks, embedding_model, VECTOR_STORE_PATH)
     
-    rag_chain, _ = get_rag_chain(vector_store, llm, k=3)
+    rag_chain, _ = get_rag_chain(vector_store, llm, k=2)
     return rag_chain
 
 # Global variable to cache the RAG chain
@@ -83,20 +82,19 @@ def ask_academic_rag(question: str) -> str:
         return f"Error: {str(e)}. Please make sure a syllabus is uploaded."
 
 def update_rag_with_file(file_path: str):
-    """Updates the FAISS index with a new syllabus file."""
+    """Adds a new syllabus to the existing FAISS index (or creates one if missing)."""
     global _rag_chain
-    
+
     embedding_model = get_embedding_model()
-    
-    # If the vector store already exists, delete it so we can create a fresh one
-    if os.path.exists(VECTOR_STORE_PATH):
-        shutil.rmtree(VECTOR_STORE_PATH)
-        
     documents = load_document(file_path)
     chunks = split_documents(documents)
-    
-    # Create and save a new vector store
-    create_vector_store(chunks, embedding_model, VECTOR_STORE_PATH)
-    
-    # Invalidate current RAG chain so it reloads on next question
+
+    if os.path.exists(VECTOR_STORE_PATH):
+        vector_store = load_vector_store(VECTOR_STORE_PATH, embedding_model)
+        vector_store.add_documents(chunks)
+        vector_store.save_local(VECTOR_STORE_PATH)
+    else:
+        create_vector_store(chunks, embedding_model, VECTOR_STORE_PATH)
+
+    # Invalidate the cached chain so it reloads with the new index
     _rag_chain = None

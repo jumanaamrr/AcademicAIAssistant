@@ -41,11 +41,10 @@ function addSubject() {
     
     // Update display
     displaySubjects();
-    alert(`✅ Added "${subject}" to the list!`);
+    alert(`Added "${subject}" to the list.`);
 }
 
 function displaySubjects() {
-    // You can add a list display here if you want
     console.log("Current subjects:", subjects);
 }
 
@@ -89,10 +88,10 @@ generateButton.addEventListener("click", async function () {
         if (response.ok) {
             displaySchedule(data);
         } else {
-            scheduleResult.innerHTML = `<p style='color:red;'>❌ Error: ${data.detail || "Failed to generate schedule"}</p>`;
+            scheduleResult.innerHTML = `<p style='color:red;'>Error: ${data.detail || "Failed to generate schedule"}</p>`;
         }
     } catch (error) {
-        scheduleResult.innerHTML = `<p style='color:red;'>❌ Error: ${error.message}</p>`;
+        scheduleResult.innerHTML = `<p style='color:red;'>Error: ${error.message}</p>`;
     }
 });
 
@@ -103,7 +102,7 @@ function displaySchedule(data) {
     const heading = document.createElement("div");
     heading.className = "schedule-summary";
     heading.innerHTML = `
-        <h3>📚 Study Schedule</h3>
+        <h3>Study Schedule</h3>
         <p>Total days: ${data.total_days}</p>
         <p>Subjects: ${subjects.map(s => s.name).join(", ")}</p>
     `;
@@ -121,7 +120,7 @@ function displaySchedule(data) {
         day.sessions.forEach(function(session) {
             sessionsHTML += `
                 <p style="margin: 4px 0; font-size: 14px;">
-                    📖 ${session.subject} (${session.difficulty}) - ${session.hours} hours
+                    ${session.subject} (${session.difficulty}) - ${session.hours} hours
                 </p>
             `;
         });
@@ -161,7 +160,7 @@ function formatDate(dateStr) {
 document.addEventListener("DOMContentLoaded", function() {
     // Create add subject button
     const addButton = document.createElement("button");
-    addButton.textContent = "➕ Add Subject";
+    addButton.textContent = "Add Subject";
     addButton.className = "primary-button";
     addButton.style.marginTop = "10px";
     addButton.addEventListener("click", addSubject);

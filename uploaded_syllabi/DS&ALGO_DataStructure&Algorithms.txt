@@ -1,0 +1,204 @@
+COURSE: Algorithms and Data Structures (CS201)
+SEMESTER: Fall 2026
+INSTRUCTOR: Dr. Ahmed Hassan
+EMAIL: a.hassan@university.edu
+OFFICE: Engineering Building, Room 305
+OFFICE HOURS: Sunday and Tuesday 11:00 AM - 1:00 PM
+LAB INSTRUCTOR: Eng. Mona Khalil
+LAB EMAIL: cs201-lab@university.edu
+LAB OFFICE HOURS: Wednesday 2:00 PM - 5:00 PM, Lab 4
+
+COURSE DESCRIPTION:
+This course provides a comprehensive study of fundamental data structures and
+algorithms essential for efficient problem-solving in computer science.
+Students will learn to analyze algorithmic complexity, choose appropriate data
+structures, and implement efficient solutions in Python and C++. The course
+emphasizes both theoretical understanding and practical implementation.
+
+PREREQUISITES:
+- CS101: Introduction to Programming
+- MATH120: Discrete Mathematics
+- Proficiency in at least one programming language (Python preferred)
+
+LEARNING OUTCOMES:
+Upon completion, students will be able to:
+1. Analyze time and space complexity using Big-O notation
+2. Implement core data structures (arrays, lists, stacks, queues, trees, graphs, hash tables)
+3. Apply sorting and searching algorithms appropriately
+4. Design efficient algorithms using recursion, divide-and-conquer, and dynamic programming
+5. Compare algorithmic trade-offs in real-world scenarios
+
+GRADING POLICY:
+- Lab Assignments (10 total): 20%
+- Written Assignments (4 total): 10%
+- Quiz 1: 5%
+- Quiz 2: 5%
+- Midterm Exam: 25%
+- Final Exam: 35%
+TOTAL: 100%
+
+GRADE SCALE:
+- A:  90-100
+- A-: 85-89
+- B+: 80-84
+- B:  75-79
+- B-: 70-74
+- C+: 65-69
+- C:  60-64
+- C-: 55-59
+- D:  50-54
+- F:  Below 50
+
+ASSIGNMENTS OVERVIEW:
+Written Assignments (10%):
+1. Complexity Analysis (due Week 3)
+2. Recursion and Backtracking (due Week 6)
+3. Graph Algorithms (due Week 10)
+4. Dynamic Programming (due Week 13)
+
+Lab Assignments (20%):
+Labs are weekly, submitted via GitHub Classroom.
+Late labs are NOT accepted (deadline is strict: Friday 11:59 PM).
+
+QUIZZES:
+- Quiz 1: October 8, 2026 (in class, 30 minutes) - covers Weeks 1-5
+- Quiz 2: November 12, 2026 (in class, 30 minutes) - covers Weeks 8-12
+- Quizzes are closed book, no calculators
+
+MIDTERM EXAM:
+- Date: October 28, 2026
+- Time: 10:00 AM - 12:00 PM
+- Location: Engineering Hall, Room 101
+- Duration: 120 minutes
+- Format: Closed book, one A4 handwritten cheat sheet allowed
+- Covers: Weeks 1-7 (Complexity, Arrays, Lists, Stacks, Queues, Trees)
+- Weight: 25%
+
+FINAL EXAM:
+- Date: December 22, 2026
+- Time: 9:00 AM - 12:00 PM
+- Location: Main Auditorium
+- Duration: 180 minutes
+- Format: Closed book, two A4 handwritten cheat sheets allowed
+- Covers: Comprehensive (all 15 weeks)
+- Weight: 35%
+
+ATTENDANCE POLICY:
+- Minimum attendance: 80% of lectures and labs
+- Missing more than 4 lectures without excuse: 5% grade deduction
+- Missing more than 6 lectures: automatic course failure
+- Lab attendance is MANDATORY; missing 3+ labs results in lab grade = 0
+
+LATE SUBMISSION POLICY:
+- Written assignments: 10% deduction per day late (max 3 days)
+- After 3 days: not accepted
+- Lab assignments: NOT accepted late (0% for missed deadline)
+- Extensions: only for documented medical emergencies, must email instructor
+  at least 24 hours BEFORE the deadline
+
+ACADEMIC INTEGRITY:
+- All code must be written individually (no pair programming unless stated)
+- You may discuss algorithms with classmates but must write code yourself
+- Copying code (from peers, GitHub, AI tools) = automatic zero + report
+- Using AI tools like ChatGPT to WRITE code = academic misconduct
+- Using AI tools to EXPLAIN concepts = allowed and encouraged
+- First offense: zero on assignment + warning
+- Second offense: automatic F in the course
+
+MAKEUP POLICY:
+- No makeup quizzes (lowest quiz grade is dropped)
+- Makeup midterm: only for medical emergencies with documentation
+- Makeup final: handled by the university registrar
+- Missed labs cannot be made up (but the lowest 2 lab grades are dropped)
+
+COURSE TOPICS (Week by Week):
+Week 1:  Introduction - Algorithms, Complexity, Big-O Notation
+Week 2:  Arrays and Dynamic Arrays - Implementation and Analysis
+Week 3:  Linked Lists - Singly, Doubly, Circular
+Week 4:  Stacks and Queues - Array vs Linked Implementations
+Week 5:  Recursion - Base Cases, Call Stack, Tail Recursion
+Week 6:  Sorting Algorithms - Bubble, Insertion, Selection, Merge, Quick
+Week 7:  Searching - Linear, Binary, Interpolation
+Week 8:  Hashing - Hash Functions, Collision Resolution, Hash Tables
+Week 9:  Trees - Binary Trees, BST, Tree Traversals
+Week 10: Balanced Trees - AVL, Red-Black, B-Trees
+Week 11: Heaps and Priority Queues
+Week 12: Graphs - Representations, BFS, DFS
+Week 13: Graph Algorithms - Dijkstra, Bellman-Ford, MST (Kruskal, Prim)
+Week 14: Dynamic Programming - Memoization, Tabulation
+Week 15: Greedy Algorithms and NP-Completeness Overview
+
+REQUIRED TEXTBOOK:
+Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2022).
+"Introduction to Algorithms" (4th edition). MIT Press.
+
+RECOMMENDED RESOURCES:
+- "Algorithms" by Sedgewick & Wayne
+- "Data Structures and Algorithm Analysis" by Mark Allen Weiss
+- LeetCode and HackerRank for practice
+- Visualgo.net for algorithm visualization
+
+PROGRAMMING LANGUAGES:
+- Primary: Python 3.10+
+- Secondary: C++ (for performance-critical labs)
+- Students may choose either for labs but must be consistent within a lab
+
+SOFTWARE REQUIREMENTS:
+- Python 3.10 or higher
+- Git and GitHub account (for lab submissions)
+- A code editor (VS Code recommended)
+- Access to the university Linux servers (for C++ labs)
+
+LAB STRUCTURE:
+- Lab sessions are 2 hours per week (Wednesday 2-4 PM)
+- Each lab has a pre-lab reading and an in-lab task
+- Submissions via GitHub Classroom
+- Lab grades: correctness (70%) + code quality (30%)
+
+COMMUNICATION POLICY:
+- Use the course Discord for questions (response within 24 hours)
+- Email the instructor only for personal/grade issues
+- Do NOT email after 9 PM or on weekends
+- Office hours are walk-in; no appointment needed
+- TA help sessions: Sunday 4-6 PM in Lab 4
+
+CLASSROOM CONDUCT:
+- Phones must be silent during lectures
+- Laptops allowed for notes and in-class coding
+- No recording without instructor permission
+- Ask questions freely — participation is encouraged
+
+STUDY EXPECTATIONS:
+- 10-12 hours of study per week outside of class
+- Read the textbook chapter BEFORE the lecture
+- Practice coding daily (30 minutes minimum)
+- Recommended: solve at least 3 LeetCode problems per week
+
+EXAM PREPARATION TIPS:
+- Analyze algorithm complexity for every problem you solve
+- Implement data structures from scratch
+- Practice writing pseudocode on paper
+- Use the cheat sheet as a study tool, not a crutch
+- Attend review sessions before each exam
+
+IMPORTANT DATES:
+- First day of class: September 1, 2026
+- Add/drop deadline: September 10, 2026
+- Quiz 1: October 8, 2026
+- Midterm: October 28, 2026
+- Quiz 2: November 12, 2026
+- Thanksgiving break: November 24-28, 2026
+- Last day of class: December 12, 2026
+- Final exam: December 22, 2026
+
+CONTACT INFORMATION:
+- Instructor: Dr. Ahmed Hassan (a.hassan@university.edu)
+- Lab Instructor: Eng. Mona Khalil (cs201-lab@university.edu)
+- Course Website: cs201.university.edu
+- Discord Invite: discord.gg/cs201-fall2026
+
+FINAL NOTES:
+- The syllabus may be updated with 1-week notice via Discord
+- Students are responsible for all announced changes
+- Special accommodations: contact the Disability Services Office
+- Last updated: August 20, 2026

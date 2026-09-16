@@ -26,6 +26,17 @@ def create_study_schedule(
 
     normalized_subjects = []
 
+    # If any exam date is before start date, adjust start to the earliest exam date
+    exam_dates = []
+    for subject in subjects:
+        if isinstance(subject, dict) and "exam_date" in subject:
+            try:
+                exam_dates.append(date.fromisoformat(str(subject["exam_date"])))
+            except Exception:
+                pass
+    if exam_dates and start > min(exam_dates):
+        start = min(exam_dates)
+
     for subject in subjects:
         if "name" not in subject or "exam_date" not in subject:
             raise ValueError(
@@ -38,7 +49,7 @@ def create_study_schedule(
             raise ValueError("Subject name cannot be empty.")
 
         try:
-            exam_date = date.fromisoformat(subject["exam_date"])
+            exam_date = date.fromisoformat(str(subject["exam_date"]))
         except ValueError:
             raise ValueError(
                 f"Invalid exam date for {name}. "
