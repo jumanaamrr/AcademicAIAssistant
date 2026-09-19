@@ -1,0 +1,157 @@
+COURSE: Database Systems (CS301)
+SEMESTER: Fall 2026
+INSTRUCTOR: Dr. Karim El-Sayed
+EMAIL: k.elsayed@university.edu
+OFFICE: Engineering Building, Room 405
+OFFICE HOURS: Sunday and Tuesday 1:00 PM - 3:00 PM
+LAB INSTRUCTOR: Eng. Hana Mostafa
+LAB EMAIL: cs301-lab@university.edu
+LAB OFFICE HOURS: Wednesday 3:00 PM - 5:00 PM, Lab 7
+
+COURSE DESCRIPTION:
+This course covers the design, implementation, and use of database systems.
+Topics include the relational model, SQL, normalization, transactions, indexing,
+and an introduction to NoSQL databases. Students will design and build a
+database application as a final project.
+
+PREREQUISITES:
+- CS201: Algorithms and Data Structures
+- CS202: Object-Oriented Programming
+
+GRADING POLICY:
+- Lab Assignments (8 total): 20%
+- Written Assignments (3 total): 10%
+- Project (Final): 25%
+- Midterm Exam: 20%
+- Final Exam: 25%
+TOTAL: 100%
+
+GRADE SCALE:
+- A: 93-100
+- A-: 90-92
+- B+: 87-89
+- B: 83-86
+- B-: 80-82
+- C+: 77-79
+- C: 73-76
+- C-: 70-72
+- D: 60-69
+- F: Below 60
+
+MIDTERM EXAM:
+- Date: October 25, 2026
+- Time: 10:00 AM - 12:00 PM
+- Location: Engineering Hall, Room 201
+- Duration: 120 minutes
+- Format: Closed book
+- Covers: Weeks 1-7 (Relational Model, SQL, ER Diagrams)
+
+FINAL EXAM:
+- Date: December 19, 2026
+- Time: 9:00 AM - 12:00 PM
+- Location: Main Auditorium
+- Duration: 180 minutes
+- Format: Closed book
+- Covers: Comprehensive (all 14 weeks)
+- Weight: 25%
+
+FINAL PROJECT:
+- Topic: Design and implement a database application
+- Teams: 3 students per group
+- Proposal due: October 15, 2026
+- Milestone 1 (Schema + ER): November 5, 2026
+- Milestone 2 (SQL + queries): November 26, 2026
+- Final submission + demo: December 10, 2026
+- Deliverables: ER diagram, SQL schema, working app, report (10 pages)
+
+ATTENDANCE POLICY:
+- Minimum attendance: 80% of lectures and labs
+- Missing more than 5 lectures: 5% deduction
+- Missing more than 8 lectures: automatic failure
+- Lab attendance is mandatory
+
+LATE SUBMISSION POLICY:
+- Written assignments: 15% per day, max 3 days
+- Lab assignments: 10% per day, max 2 days
+- Project milestones: late = 20% deduction per day
+- After grace period: not accepted
+
+ACADEMIC INTEGRITY:
+- Individual work on written assignments
+- Group work on labs and project (within team)
+- Code must be your own (no copying from peers or online)
+- Using AI to write SQL or schema = misconduct (disclose if used for learning)
+- First offense: zero on assignment
+- Second offense: automatic F + report
+
+MAKEUP POLICY:
+- No makeup quizzes
+- Makeup midterm: medical emergency only, 48h notice
+- Makeup final: through registrar
+- Missed labs cannot be made up (lowest 2 dropped)
+
+COURSE TOPICS (Week by Week):
+Week 1:  Introduction - Database Concepts, DBMS Architecture
+Week 2:  Relational Model - Tables, Keys, Constraints
+Week 3:  ER Modeling - Entities, Relationships, Cardinality
+Week 4:  ER to Relational Mapping
+Week 5:  SQL Basics - SELECT, WHERE, ORDER BY
+Week 6:  SQL Joins - Inner, Outer, Self
+Week 7:  Aggregation and Subqueries
+Week 8:  Normalization - 1NF, 2NF, 3NF, BCNF
+Week 9:  Indexing - B-Trees, Hash Indexes
+Week 10: Transactions - ACID, Isolation Levels
+Week 11: Concurrency Control - Locking, Deadlocks
+Week 12: Query Optimization
+Week 13: NoSQL - MongoDB, Key-Value, Document Stores
+Week 14: Review and Project Demos
+
+REQUIRED TEXTBOOK:
+Silberschatz, A., Korth, H., & Sudarshan, S. (2020). "Database System Concepts"
+(7th edition). McGraw-Hill.
+
+RECOMMENDED RESOURCES:
+- "SQL for Data Analysis" by Cathy Tanimura
+- PostgreSQL official documentation
+- MongoDB University (free courses)
+
+TOOLS AND SOFTWARE:
+- PostgreSQL 15+ (primary DBMS)
+- MongoDB (for NoSQL section)
+- pgAdmin or DBeaver for GUI
+- Python + psycopg2 for app development
+- Git for version control
+
+LAB STRUCTURE:
+- 2 hours per week (Wednesday 3-5 PM)
+- Pre-lab reading required
+- Submissions via GitHub
+- Lab grading: correctness (70%) + design quality (30%)
+
+COMMUNICATION POLICY:
+- Use course Discord for questions
+- Email instructor for personal/grade matters
+- Response time: within 24 hours on weekdays
+- Do not email after 9 PM or on weekends
+
+STUDY EXPECTATIONS:
+- 8-10 hours per week outside of class
+- Practice SQL daily (LeetCode Database section recommended)
+- Start project early (it's 25% of your grade)
+
+IMPORTANT DATES:
+- First day of class: September 1, 2026
+- Project proposal: October 15, 2026
+- Midterm: October 25, 2026
+- Milestone 1: November 5, 2026
+- Milestone 2: November 26, 2026
+- Project submission + demo: December 10, 2026
+- Last day of class: December 12, 2026
+- Final Exam: December 19, 2026
+
+CONTACT:
+- Instructor: Dr. Karim El-Sayed (k.elsayed@university.edu)
+- Lab Instructor: Eng. Hana Mostafa (cs301-lab@university.edu)
+- Course Website: cs301.university.edu
+
+Last updated: August 20, 2026
