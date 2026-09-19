@@ -30,7 +30,7 @@ class ChatRequest(BaseModel):
 class Course(BaseModel):
     name: str
     credits: float
-    grade: Union[str, float]   # accepts "A", "B+" OR numeric 4.0, 3.7
+    grade: Union[str, float]
 
 class GPARequest(BaseModel):
     courses: List[Course]
@@ -47,26 +47,20 @@ class StudyRequest(BaseModel):
 
 # ===== HELPERS =====
 
-# Map letter grades -> grade points
 LETTER_TO_POINTS = {
     "A": 4.0, "A-": 3.7, "B+": 3.3, "B": 3.0,
     "B-": 2.7, "C+": 2.3, "C": 2.0, "C-": 1.7,
     "D+": 1.3, "D": 1.0, "F": 0.0
 }
 
-# Map numeric grade points -> letter grades
 POINTS_TO_LETTER = {v: k for k, v in LETTER_TO_POINTS.items()}
 
 def get_grade_points(grade: Union[str, float]) -> float:
-    """Accepts a letter grade ('A', 'B+') OR a numeric grade point (4.0, 3.3).
-    Returns the grade point as a float."""
     if isinstance(grade, (int, float)):
         return float(grade)
-
     grade_str = str(grade).strip().upper()
     if grade_str in LETTER_TO_POINTS:
         return LETTER_TO_POINTS[grade_str]
-
     try:
         return float(grade_str)
     except ValueError:
@@ -97,15 +91,15 @@ async def chat(request: ChatRequest):
 async def upload(file: UploadFile, course_name: str = Form(...)):
     try:
         from tools.rag_tool import update_rag_with_file
-        
+
         os.makedirs("uploaded_syllabi", exist_ok=True)
         file_path = os.path.join("uploaded_syllabi", f"{course_name}_{file.filename}")
 
         with open(file_path, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
-            
-        # Update the RAG index with the new syllabus
-        update_rag_with_file(file_path)
+
+        # ✅ PASS course_name so chunks get tagged
+        update_rag_with_file(file_path, course_name=course_name)
 
         return {
             "success": True,
@@ -128,13 +122,11 @@ def syllabus_status():
 def calculate_gpa_endpoint(request: GPARequest):
     total_points = 0.0
     total_credits = 0.0
-
     course_details = []
     for c in request.courses:
         points = get_grade_points(c.grade)
         total_points += points * c.credits
         total_credits += c.credits
-
         letter = POINTS_TO_LETTER.get(points, str(c.grade))
         course_details.append({
             "name": c.name,
@@ -142,9 +134,7 @@ def calculate_gpa_endpoint(request: GPARequest):
             "credits": c.credits,
             "quality_points": round(points * c.credits, 2)
         })
-
     gpa = total_points / total_credits if total_credits > 0 else 0.0
-
     return {
         "gpa": round(gpa, 2),
         "total_credits": total_credits,
@@ -181,15 +171,12 @@ def generate_schedule_endpoint(request: StudyRequest):
     schedule = []
     for i in range(min(total_days, 14)):
         current_date = start + timedelta(days=i)
-
         active_subjects = [
             s for s in request.subjects
             if datetime.strptime(s.exam_date, "%Y-%m-%d") > current_date
         ]
-
         if not active_subjects:
             continue
-
         hours_each = round(request.available_hours_per_day / len(active_subjects), 1)
         sessions = [
             {
@@ -201,7 +188,6 @@ def generate_schedule_endpoint(request: StudyRequest):
             }
             for s in active_subjects
         ]
-
         schedule.append({
             "date": current_date.strftime("%Y-%m-%d"),
             "formatted_date": current_date.strftime("%a, %b %d"),
