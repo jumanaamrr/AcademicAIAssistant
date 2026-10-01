@@ -74,6 +74,7 @@ function removeCourse(index) {
 async function calculateGPAWithAPI() {
     if (courses.length === 0) {
         gpaValue.textContent = "0.00";
+        localStorage.removeItem("academicGpaReport");
         return;
     }
     
@@ -96,6 +97,11 @@ async function calculateGPAWithAPI() {
         
         if (response.ok) {
             gpaValue.textContent = data.gpa.toFixed(2);
+            localStorage.setItem("academicGpaReport", JSON.stringify({
+                gpa: data.gpa,
+                courses: data.courses || [],
+                total_credits: data.total_credits,
+            }));
         } else {
             gpaValue.textContent = "Error";
             alert(`Error: ${data.detail || "Failed to calculate GPA"}`);

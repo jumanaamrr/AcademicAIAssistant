@@ -6,71 +6,99 @@ const difficultyInput = document.getElementById("difficulty");
 const hoursInput = document.getElementById("hours");
 const startDateInput = document.getElementById("startDate");
 const generateButton = document.getElementById("generateButton");
+const addSubjectButton = document.getElementById("addSubjectButton");
 const scheduleResult = document.getElementById("scheduleResult");
+const subjectsList = document.getElementById("subjectsList");
 
-// Array to store multiple subjects
 let subjects = [];
+window.lastStudySchedule = [];
 
-// Add subject to list
 function addSubject() {
     const subject = subjectInput.value.trim();
     const examDate = examDateInput.value;
     const difficulty = difficultyInput.value;
-    
+
     if (subject === "") {
         alert("Please enter the subject.");
         return;
     }
-    
+
     if (examDate === "") {
         alert("Please select the exam date.");
         return;
     }
-    
+
     if (difficulty === "") {
         alert("Please select the difficulty.");
         return;
     }
-    
+
     subjects.push({ name: subject, exam_date: examDate, difficulty: difficulty });
-    
-    // Clear inputs
+
     subjectInput.value = "";
     examDateInput.value = "";
     difficultyInput.value = "";
-    
-    // Update display
+
     displaySubjects();
-    alert(`Added "${subject}" to the list.`);
 }
 
 function displaySubjects() {
-    console.log("Current subjects:", subjects);
+    if (!subjectsList) {
+        return;
+    }
+
+    if (subjects.length === 0) {
+        subjectsList.innerHTML = "<p>No subjects added yet.</p>";
+        return;
+    }
+
+    subjectsList.innerHTML = subjects.map(function (item, index) {
+        return `
+            <div class="schedule-item">
+                <div>
+                    <strong>${item.name}</strong>
+                    <p>${item.difficulty} · exam ${item.exam_date}</p>
+                </div>
+                <button class="delete-button" type="button" data-index="${index}">Remove</button>
+            </div>
+        `;
+    }).join("");
+
+    subjectsList.querySelectorAll(".delete-button").forEach(function (button) {
+        button.addEventListener("click", function () {
+            const index = Number(button.getAttribute("data-index"));
+            subjects.splice(index, 1);
+            displaySubjects();
+        });
+    });
+}
+
+if (addSubjectButton) {
+    addSubjectButton.addEventListener("click", addSubject);
 }
 
 generateButton.addEventListener("click", async function () {
     const hours = Number(hoursInput.value);
     const startDate = startDateInput.value;
-    
+
     if (subjects.length === 0) {
         alert("Please add at least one subject.");
         return;
     }
-    
+
     if (!hours || hours <= 0) {
         alert("Please enter your available study hours.");
         return;
     }
-    
+
     if (startDate === "") {
         alert("Please select the start date.");
         return;
     }
-    
-    // Generate schedule via API
+
     try {
         scheduleResult.innerHTML = "<p style='text-align:center;'>Generating schedule...</p>";
-        
+
         const response = await fetch(`${API_BASE_URL}/study-schedule/generate`, {
             method: "POST",
             headers: {
@@ -82,10 +110,11 @@ generateButton.addEventListener("click", async function () {
                 start_date: startDate
             })
         });
-        
+
         const data = await response.json();
-        
+
         if (response.ok) {
+            window.lastStudySchedule = data.schedule || [];
             displaySchedule(data);
         } else {
             scheduleResult.innerHTML = `<p style='color:red;'>Error: ${data.detail || "Failed to generate schedule"}</p>`;
@@ -97,8 +126,7 @@ generateButton.addEventListener("click", async function () {
 
 function displaySchedule(data) {
     scheduleResult.innerHTML = "";
-    
-    // Summary
+
     const heading = document.createElement("div");
     heading.className = "schedule-summary";
     heading.innerHTML = `
@@ -107,15 +135,14 @@ function displaySchedule(data) {
         <p>Subjects: ${subjects.map(s => s.name).join(", ")}</p>
     `;
     scheduleResult.appendChild(heading);
-    
-    // Schedule list
+
     const scheduleList = document.createElement("div");
     scheduleList.className = "schedule-list";
-    
+
     data.schedule.forEach(function(day) {
         const item = document.createElement("div");
         item.className = "schedule-item";
-        
+
         let sessionsHTML = "";
         day.sessions.forEach(function(session) {
             sessionsHTML += `
@@ -124,7 +151,7 @@ function displaySchedule(data) {
                 </p>
             `;
         });
-        
+
         item.innerHTML = `
             <div>
                 <strong>${formatDate(day.date)}</strong>
@@ -132,13 +159,12 @@ function displaySchedule(data) {
                 ${sessionsHTML}
             </div>
         `;
-        
+
         scheduleList.appendChild(item);
     });
-    
+
     scheduleResult.appendChild(scheduleList);
-    
-    // Note
+
     if (data.total_days > 14) {
         const note = document.createElement("p");
         note.className = "schedule-note";
@@ -155,17 +181,3 @@ function formatDate(dateStr) {
         day: "numeric"
     });
 }
-
-// Add "Add Subject" button to the UI
-document.addEventListener("DOMContentLoaded", function() {
-    // Create add subject button
-    const addButton = document.createElement("button");
-    addButton.textContent = "Add Subject";
-    addButton.className = "primary-button";
-    addButton.style.marginTop = "10px";
-    addButton.addEventListener("click", addSubject);
-    
-    // Insert it after the difficulty select
-    const difficultySelect = document.getElementById("difficulty");
-    difficultySelect.parentNode.insertBefore(addButton, difficultySelect.nextSibling);
-});

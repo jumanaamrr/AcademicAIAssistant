@@ -11,8 +11,10 @@ venv/
 .vscode/
 .idea/
 
-# Local RAG test scripts, sample data, and vector indexes
+# Local RAG test scripts and vector indexes
 test_rag.py
-sample_syllabus.txt
 faiss_index/
 test_faiss_index/
+
+# Generated academic reports
+reports/*.html

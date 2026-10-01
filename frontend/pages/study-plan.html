@@ -100,6 +100,13 @@
 
         </section>
 
+        <section id="subjectsSection" class="study-card">
+            <h2>Added Subjects</h2>
+            <div id="subjectsList">
+                <p>No subjects added yet.</p>
+            </div>
+        </section>
+
         <section id="scheduleSection" class="schedule-card">
 
             <h2>Your Study Plan</h2>
@@ -110,9 +117,28 @@
 
         </section>
 
+        <section class="study-card">
+            <h2>Export Academic Report</h2>
+            <p>
+                Generate a downloadable HTML summary that combines this study plan
+                with the latest GPA result from the GPA page.
+            </p>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="studentName">Student Name</label>
+                    <input type="text" id="studentName" placeholder="Example: Alex Johnson">
+                </div>
+            </div>
+            <button type="button" id="exportReportButton" class="primary-button">
+                Export Report
+            </button>
+            <p id="exportStatus" class="schedule-note"></p>
+        </section>
+
     </main>
 
     <script src="../js/study-plan.js"></script>
+    <script src="../js/report.js"></script>
 
 </body>
 </html>

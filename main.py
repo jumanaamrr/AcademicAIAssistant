@@ -3,12 +3,14 @@ import shutil
 from typing import List, Optional, Union
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, File, Form, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from agent.agent import run_agent
 from tools.rag_tool import ask_academic_rag
+from tools.report_generator import REPORTS_DIR, generate_report
 
 load_dotenv(override=True)
 app = FastAPI()
@@ -44,6 +46,13 @@ class StudyRequest(BaseModel):
     subjects: List[Subject]
     available_hours_per_day: float
     start_date: Optional[str] = None
+
+class ReportRequest(BaseModel):
+    student_name: str
+    gpa: Optional[float] = None
+    courses: Optional[List[dict]] = None
+    schedule: Optional[List[dict]] = None
+    notes: Optional[str] = None
 
 # ===== HELPERS =====
 
@@ -196,3 +205,41 @@ def generate_schedule_endpoint(request: StudyRequest):
         })
 
     return {"schedule": schedule, "total_days": total_days}
+
+# ACADEMIC REPORT (automated action)
+@app.post("/report/generate")
+def generate_report_endpoint(request: ReportRequest):
+    student_name = (request.student_name or "").strip()
+    if not student_name:
+        raise HTTPException(status_code=400, detail="student_name is required")
+
+    result = generate_report(
+        student_name=student_name,
+        gpa=request.gpa,
+        courses=request.courses,
+        schedule=request.schedule,
+        notes=request.notes,
+    )
+    return {
+        "success": True,
+        "html": result["html"],
+        "filename": result["filename"],
+        "generated_at": result["generated_at"],
+        "download_url": f"/report/download/{result['filename']}",
+    }
+
+@app.get("/report/download/{filename}")
+def download_report(filename: str):
+    safe_name = os.path.basename(filename)
+    if safe_name != filename or not safe_name.endswith(".html"):
+        raise HTTPException(status_code=400, detail="Invalid report filename")
+
+    file_path = os.path.join(REPORTS_DIR, safe_name)
+    if not os.path.isfile(file_path):
+        raise HTTPException(status_code=404, detail="Report not found")
+
+    return FileResponse(
+        path=file_path,
+        media_type="text/html",
+        filename=safe_name,
+    )

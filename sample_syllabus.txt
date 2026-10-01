@@ -1,0 +1,240 @@
+CS301 - ARTIFICIAL INTELLIGENCE
+Course Syllabus — Fall 2026
+Department of Computer Science
+
+========================================
+COURSE INFORMATION
+========================================
+
+Course Code:     CS301
+Course Title:    Artificial Intelligence
+Credit Hours:    3
+Semester:        Fall 2026
+Meeting Times:   Monday / Wednesday / Friday, 10:00 AM – 11:00 AM
+Classroom:       Engineering Building, Room 204
+Prerequisites:   CS201 (Data Structures), MATH201 (Probability & Statistics)
+
+========================================
+INSTRUCTOR INFORMATION
+========================================
+
+Instructor:       Dr. Sarah Mitchell
+Email:            s.mitchell@university.edu
+Office:           Engineering Building, Room 312
+Office Hours:     Monday & Wednesday 1:00 PM – 3:00 PM, or by appointment
+Response Time:    Emails will be answered within 24 hours on weekdays.
+
+Teaching Assistant: Ahmed Al-Hassan
+Email:              a.alhassan@university.edu
+TA Office Hours:    Tuesday & Thursday 2:00 PM – 4:00 PM, Room 110
+
+========================================
+COURSE DESCRIPTION
+========================================
+
+This course introduces the foundational concepts and techniques of Artificial
+Intelligence. Students will explore problem-solving strategies, knowledge
+representation, machine learning, natural language processing, and AI ethics.
+By the end of the course, students will be able to design and implement
+intelligent agents capable of solving complex real-world problems.
+
+========================================
+COURSE OBJECTIVES
+========================================
+
+By the end of this course, students will be able to:
+1. Understand the history and scope of Artificial Intelligence.
+2. Implement search algorithms including BFS, DFS, A*, and heuristic search.
+3. Design knowledge representation systems using logic and ontologies.
+4. Apply machine learning algorithms to classification and regression problems.
+5. Understand neural networks and deep learning basics.
+6. Analyze the ethical implications of AI systems.
+7. Build a functional AI agent as part of the final project.
+
+========================================
+REQUIRED TEXTBOOK
+========================================
+
+"Artificial Intelligence: A Modern Approach" (4th Edition)
+Authors: Stuart Russell and Peter Norvig
+Publisher: Pearson
+ISBN: 978-0134610993
+
+========================================
+GRADING BREAKDOWN
+========================================
+
+The final grade in CS301 is calculated as follows:
+
+  Assignments (5 total):           25%
+  Midterm Examination:             25%
+  Final Examination:               35%
+  Final Project:                   10%
+  Class Participation & Quizzes:    5%
+
+Total:                            100%
+
+Grading Scale:
+  A  = 93–100%
+  A- = 90–92%
+  B+ = 87–89%
+  B  = 83–86%
+  B- = 80–82%
+  C+ = 77–79%
+  C  = 73–76%
+  C- = 70–72%
+  D+ = 67–69%
+  D  = 60–66%
+  F  = Below 60%
+
+========================================
+ASSIGNMENTS
+========================================
+
+There are 5 programming assignments throughout the semester:
+
+  Assignment 1: Search Algorithms (BFS, DFS, A*) — Due Week 3
+  Assignment 2: Constraint Satisfaction Problems   — Due Week 5
+  Assignment 3: Logic and Knowledge Representation — Due Week 8
+  Assignment 4: Machine Learning Classifier        — Due Week 11
+  Assignment 5: Neural Network Implementation      — Due Week 14
+
+All assignments must be submitted via the course portal by 11:59 PM on the
+due date. Assignments submitted in Python (3.10+) only.
+
+========================================
+LATE SUBMISSION POLICY
+========================================
+
+Late submissions are accepted under the following penalty schedule:
+
+  Up to 24 hours late:    10% deduction from the assignment grade
+  24 to 48 hours late:    30% deduction from the assignment grade
+  More than 48 hours late: Assignment will NOT be accepted (grade of zero)
+
+Exceptions are made only for documented medical emergencies or university-
+approved absences. You must notify the instructor BEFORE the deadline if you
+anticipate a late submission.
+
+========================================
+ATTENDANCE POLICY
+========================================
+
+Regular attendance is expected. Students are allowed a maximum of 3 unexcused
+absences. Each additional absence beyond 3 will result in a 1% deduction from
+your final grade. Students who miss more than 6 classes may be administratively
+withdrawn from the course.
+
+If you must miss a class, you are responsible for obtaining notes and
+assignments from a classmate. Attendance is tracked every session.
+
+========================================
+ACADEMIC INTEGRITY
+========================================
+
+All submitted work must be your own. Collaboration on understanding concepts
+is encouraged, but submitted code and written answers must be individual work
+unless the assignment explicitly states otherwise. Violations of academic
+integrity will result in a zero on the assignment and may be referred to the
+Academic Affairs Committee for further action.
+
+The use of AI code generation tools (ChatGPT, Copilot, etc.) must be
+disclosed. Submitting AI-generated code as your own without disclosure is
+considered a violation of academic integrity.
+
+========================================
+MIDTERM EXAMINATION
+========================================
+
+Date:     Week 8 (exact date announced on course portal)
+Format:   Written exam, 90 minutes, closed book
+Coverage: Chapters 1–10 (Search, CSPs, Logic, Knowledge Representation)
+Location: Regular classroom (Engineering Building, Room 204)
+Weight:   25% of final grade
+
+No make-up midterms are offered except for documented emergencies.
+
+========================================
+FINAL EXAMINATION
+========================================
+
+Date:     Finals week (exact date set by the Registrar)
+Format:   Written exam, 120 minutes, closed book, one formula sheet allowed
+Coverage: Comprehensive — all topics from the semester
+Location: Announced by the Registrar one week before finals
+Weight:   35% of final grade
+
+========================================
+FINAL PROJECT
+========================================
+
+Students will build a multi-agent AI system as their final project.
+The project is worth 10% of the final grade.
+
+Project teams: 2–3 students
+Deliverables:
+  - Source code submitted via GitHub
+  - Written report (5–8 pages)
+  - 10-minute in-class demo presentation
+  - Face-cam video explanation of the system architecture
+
+Project topics must be approved by the instructor by Week 10.
+Proposals are due at the end of Week 7.
+
+========================================
+WEEKLY SCHEDULE
+========================================
+
+Week 1:  Introduction to AI — History, Definitions, Scope
+Week 2:  Intelligent Agents and Environments
+Week 3:  Uninformed Search (BFS, DFS, Depth-Limited, Iterative Deepening)
+Week 4:  Informed Search (Greedy Best-First, A*, Heuristics)
+Week 5:  Constraint Satisfaction Problems (CSPs, Backtracking)
+Week 6:  Adversarial Search (Minimax, Alpha-Beta Pruning)
+Week 7:  Knowledge Representation — Propositional Logic
+Week 8:  MIDTERM EXAM + First-Order Logic
+Week 9:  Inference and Resolution
+Week 10: Planning and Acting
+Week 11: Introduction to Machine Learning (Supervised Learning)
+Week 12: Decision Trees, Naive Bayes, K-Nearest Neighbors
+Week 13: Neural Networks and Deep Learning Basics
+Week 14: Natural Language Processing Overview
+Week 15: AI Ethics, Bias, and Societal Impact
+Week 16: Final Project Presentations
+
+========================================
+COURSE POLICIES
+========================================
+
+Electronic Devices:
+  Laptops and tablets are permitted for note-taking. Phone use during
+  lectures is not permitted. Devices used for non-class purposes will
+  result in a participation grade deduction.
+
+Classroom Conduct:
+  Students are expected to be respectful to the instructor and peers.
+  Disruptive behavior will result in removal from class.
+
+Accommodations:
+  Students requiring accommodations for disabilities should contact the
+  Office of Student Accessibility Services and provide documentation at
+  least one week before the accommodation is needed.
+
+Office Hours Policy:
+  Office hours are drop-in — no appointment needed. For in-depth project
+  or assignment help, please email to schedule a 30-minute appointment
+  outside of standard office hours.
+
+========================================
+COMMUNICATION
+========================================
+
+All official course announcements will be posted on the course portal.
+Students are expected to check the portal and their university email at
+least once per day. Important announcements will NOT be repeated in class.
+
+For assignment clarifications, use the portal discussion board so all
+students benefit from the answer.
+
+For private matters (grades, attendance, personal issues), email the
+instructor directly at s.mitchell@university.edu.

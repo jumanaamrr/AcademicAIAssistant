@@ -36,24 +36,11 @@ def get_llm():
     api_key = os.getenv("GROQ_API_KEY")
     if not api_key:
         raise ValueError("GROQ_API_KEY is not set.")
-
-    headers = {"Authorization": f"Bearer {api_key}"}
-    try:
-        r = requests.get("https://api.groq.com/openai/v1/models", headers=headers)
-        if r.status_code == 200:
-            models = [m["id"] for m in r.json().get("data", [])]
-            chat_models = [m for m in models if "whisper" not in m and "guard" not in m]
-            model_name = next(
-                (m for m in chat_models if "qwen" in m or "llama" in m or "mixtral" in m),
-                chat_models[0] if chat_models else "llama-3.1-8b-instant",
-            )
-        else:
-            model_name = "llama-3.1-8b-instant"
-    except Exception:
-        model_name = "llama-3.1-8b-instant"
-
-    return ChatGroq(model=model_name, temperature=0.3, api_key=api_key)
-
+    return ChatGroq(
+        model="openai/gpt-oss-120b",
+        temperature=0.3,
+        api_key=api_key,
+    )
 
 # Global cache
 _vector_store = None

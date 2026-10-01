@@ -9,6 +9,7 @@ from langgraph.checkpoint.memory import MemorySaver
 from tools.rag_tool import ask_academic_rag
 from tools.gpa_calculator import calculate_gpa
 from tools.study_scheduler import create_study_schedule
+from tools.report_generator import generate_report
 
 
 load_dotenv()
@@ -52,15 +53,53 @@ def academic_rag(question: str) -> str:
     return ask_academic_rag(question)
 
 
+@tool(
+    description="Generate a downloadable HTML academic summary report that combines "
+                "a student's GPA and study schedule into a single formatted document. "
+                "Use this when the user asks to generate a report, export their academic "
+                "summary, download their results, or create a report. "
+                "Provide the student's name, their GPA (float), the list of courses "
+                "(each with name, grade, credits, quality_points), and their study "
+                "schedule (list of days with date, total_hours, sessions). "
+                "Optionally include any notes or AI-generated comments."
+)
+def report_generator(
+    student_name: str,
+    gpa: float | None = None,
+    courses: list | None = None,
+    schedule: list | None = None,
+    notes: str | None = None,
+) -> dict:
+    """Generate a formatted HTML academic summary report."""
+    result = generate_report(
+        student_name=student_name,
+        gpa=gpa,
+        courses=courses,
+        schedule=schedule,
+        notes=notes,
+    )
+    return {
+        "message": (
+            f"Report generated successfully and saved as '{result['filename']}'. "
+            f"Generated at {result['generated_at']}. "
+            f"The user can download it from the /report/download/{result['filename']} endpoint."
+        ),
+        "filename": result["filename"],
+        "generated_at": result["generated_at"],
+    }
+
+
 SYSTEM_PROMPT = """
 You are an Academic AI Assistant helping university students.
 
-You have three tools:
+You have four tools:
 
 1. gpa_calculator — for GPA calculations.
 2. study_scheduler — for study plans and exam prep schedules.
 3. academic_rag — for questions about courses, syllabi, policies,
    grading, exams, attendance, office hours, and topics.
+4. report_generator — for generating a downloadable HTML academic summary
+   report that combines GPA and study schedule data.
 
 Important rules:
 
@@ -77,6 +116,10 @@ Important rules:
   "what about it?"), rewrite it into a standalone question that
   includes the course name from earlier in the conversation, then
   call academic_rag.
+- When the user asks to "generate a report", "export results",
+  "download my academic summary", or similar, call report_generator.
+  Ask for the student's name if not provided. Use GPA and schedule
+  data from earlier in the conversation if available.
 - Do not invent syllabus information.
 - Keep answers clear and conversational.
 - ALWAYS write in plain text. Never use **bold**, *italic*, markdown
@@ -102,7 +145,7 @@ def create_agent():
         api_key=api_key,
     )
 
-    tools = [gpa_calculator, study_scheduler, academic_rag]
+    tools = [gpa_calculator, study_scheduler, academic_rag, report_generator]
 
     memory = MemorySaver()
 
@@ -116,18 +159,19 @@ def create_agent():
     return _agent
 
 
-import re  # add at the top if not already there
+import re  # noqa: E402 — kept at module level for clarity
+
 
 def _clean_final_answer(text: str) -> str:
     """Strip markdown from the agent's final response."""
-    text = re.sub(r"\*\*(.+?)\*\*", r"\1", text)          # **bold**
+    text = re.sub(r"\*\*(.+?)\*\*", r"\1", text)           # **bold**
     text = re.sub(r"(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)", r"\1", text)  # *italic*
-    text = re.sub(r"__(.+?)__", r"\1", text)              # __bold__
-    text = re.sub(r"\$([^\$]+)\$", r"\1", text)           # $math$
-    text = text.replace("—", ",").replace("–", "-")       # dashes
-    text = re.sub(r"^#+\s*", "", text, flags=re.MULTILINE) # headings
-    text = text.replace("`", "")                          # backticks
-    text = re.sub(r" {2,}", " ", text)                    # extra spaces
+    text = re.sub(r"__(.+?)__", r"\1", text)               # __bold__
+    text = re.sub(r"\$([^\$]+)\$", r"\1", text)            # $math$
+    text = text.replace("—", ",").replace("–", "-")        # dashes
+    text = re.sub(r"^#+\s*", "", text, flags=re.MULTILINE)  # headings
+    text = text.replace("`", "")                            # backticks
+    text = re.sub(r" {2,}", " ", text)                      # extra spaces
     return text.strip()
 
 
@@ -143,13 +187,13 @@ def run_agent(user_input: str, session_id: str = "default") -> str:
             config=config,
         )
         raw = response["messages"][-1].content
-        return _clean_final_answer(raw)   # ← apply cleanup
+        return _clean_final_answer(raw)
 
     except Exception as e:
         err_msg = str(e).lower()
         if "rate_limit" in err_msg or "413" in err_msg or "tpm" in err_msg or "tokens per minute" in err_msg:
-            logging.warning("Rate limit. Falling back to llama-3.1-8b-instant.")
-            os.environ["GROQ_MODEL"] = "llama-3.1-8b-instant"
+            logging.warning("Rate limit. Falling back to openai/gpt-oss-20b.")
+            os.environ["GROQ_MODEL"] = "openai/gpt-oss-20b"
             _agent = None
             fallback_agent = create_agent()
             response = fallback_agent.invoke(

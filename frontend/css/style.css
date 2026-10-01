@@ -640,6 +640,17 @@ nav ul li a.active {
     transform: translateY(0);
 }
 
+#exportReportButton {
+    margin-top: 12px;
+}
+
+#subjectsList .schedule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
 .delete-button {
     background: var(--danger);
     color: var(--text-inverse);
